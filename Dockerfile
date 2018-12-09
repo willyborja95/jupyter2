@@ -53,8 +53,16 @@ RUN pip install . && \
 
 RUN mkdir -p /srv/jupyterhub/
 WORKDIR /srv/jupyterhub/
+ADD ./config/ /srv/jupyterhub/
+
 EXPOSE 8000
 
 LABEL org.jupyter.service="jupyterhub"
 
+#RUN jupyterhub -f jupyterhub_config.py
+
 CMD ["jupyterhub"]
+
+#RUN jupyterhub -f jupyterhub_config.py
+
+
