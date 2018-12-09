@@ -55,6 +55,8 @@ RUN mkdir -p /srv/jupyterhub/
 WORKDIR /srv/jupyterhub/
 ADD ./config/ /srv/jupyterhub/
 
+RUN openssl rand -hex 32 > /srv/jupyterhub/jupyterhub_cookie_secret
+
 EXPOSE 8000
 
 LABEL org.jupyter.service="jupyterhub"
