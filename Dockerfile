@@ -57,11 +57,31 @@ ADD ./config/ /srv/jupyterhub/
 
 RUN openssl rand -hex 32 > /srv/jupyterhub/jupyterhub_cookie_secret
 
+RUN chmod 400 /srv/jupyterhub/jupyterhub_cookie_secret
+
 EXPOSE 8000
 
-LABEL org.jupyter.service="jupyterhub"
 
-#RUN jupyterhub -f jupyterhub_config.py
+
+
+
+
+RUN mkdir /home/notebooks
+RUN mkdir /home/jupyterhub_volumes
+
+
+RUN chmod 777 -R /home/notebooks
+RUN chmod 777 -R /home/jupyterhub_volumes
+
+
+
+
+
+
+
+
+
+LABEL org.jupyter.service="jupyterhub"
 
 CMD ["jupyterhub"]
 
